@@ -1,0 +1,75 @@
+﻿@model IEnumerable<ShopProject.Areas.Administrator.Models.OrderDetail>
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Administrator/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ShopProject.Repository.ProductDAO proDAO = new ShopProject.Repository.ProductDAO();
+}
+<h2>Chi tiết đơn hàng</h2>
+<div class="text-warning">
+    @ViewBag.ProError
+</div>
+<hr />
+<div>
+    <i class="fa fa-undo fa-fw"></i>@Html.ActionLink("Quay lại", "Index", "Order")
+</div>
+<div>
+    <div class="panel panel-default">
+        <div class="panel-body" style="width:100%;height:500px;overflow:auto;">
+            <div class="table-responsive table-bordered">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Mã HD</th>
+                            <th>Hình</th>
+                            <th>Tên sp</th>
+                            <th>ID sp</th>
+                            <th>Size</th>
+                            <th>Số lượng</th>
+                            <th>Tiền</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            int i = 0;
+                            int tong = 0;
+                        }
+                        @foreach (var item in Model)
+                        {
+                            i++;
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.orderID)</td>
+                            <td><img src="@item.Product.proPhoto" width="50" height="60"></td>
+                            <td>@Html.DisplayFor(modelItem => item.Product.proName)</td>
+                            <td>@Html.DisplayFor(modelItem => item.proID)</td>
+                            <td>@Html.DisplayFor(modelItem => item.ordtsSize)</td>
+                            <td>@Html.DisplayFor(modelItem => item.ordtsQuantity)</td>
+                            <td>@Int32.Parse(item.ordtsThanhTien).ToString("#,##0") VNĐ</td>
+                        </tr>
+                            tong += Int32.Parse(item.ordtsThanhTien);
+                        }
+
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Tổng tiền:</td>
+                            <td style="font-weight: 700;">@tong.ToString("#,##0") VNĐ</td>
+                            <td></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <!-- /.table-responsive -->
+        </div>
+        <!-- /.panel-body -->
+    </div>
+    <!-- /.panel -->
+</div>

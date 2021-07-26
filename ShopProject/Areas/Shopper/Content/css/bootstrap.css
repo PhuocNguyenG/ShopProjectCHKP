@@ -282,7 +282,6 @@ body {
 input[type="number"] {
     -webkit-appearance: textfield;
     -moz-appearance: textfield;
-    appearance: textfield;
 }
 
 input[type=number]::-webkit-inner-spin-button,
@@ -352,11 +351,11 @@ input[type=number]::-webkit-outer-spin-button {
     }
 
     #select-size option {
-        width: 60px;
+        width: 40px;
         font-size: 1.2em;
         padding: 10px 0;
         text-align: center;
-        margin-right: 20px;
+        margin-right: 5px;
         display: inline-block;
         cursor: pointer;
         border: rgb(0 0 0) solid 1px;
@@ -364,11 +363,11 @@ input[type=number]::-webkit-outer-spin-button {
         color: rgb(0 0 0);
     }
         #select-size option:hover {
-            width: 60px;
+            width: 40px;
             font-size: 1.2em;
             padding: 10px 0;
             text-align: center;
-            margin-right: 20px;
+            margin-right: 5px;
             display: inline-block;
             cursor: pointer;
             border: rgb(86 35 35) solid 1px;
@@ -2131,7 +2130,7 @@ select[multiple].input-lg {
 fieldset[disabled] .btn {
   pointer-events: none;
   cursor: not-allowed;
-  filter: alpha(opacity=65);
+ 
   -webkit-box-shadow: none;
           box-shadow: none;
   opacity: .65;
@@ -3169,7 +3168,6 @@ input[type="button"].btn-block {
   cursor: not-allowed;
   background-color: transparent;
   background-image: none;
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
 }
 .open > .dropdown-menu {
   display: block;
@@ -5161,7 +5159,6 @@ a.list-group-item-danger.active:focus {
   line-height: 1;
   color: #000;
   text-shadow: 0 1px 0 #fff;
-  filter: alpha(opacity=20);
   opacity: .2;
 }
 .close:hover,
@@ -5169,7 +5166,6 @@ a.list-group-item-danger.active:focus {
   color: #000;
   text-decoration: none;
   cursor: pointer;
-  filter: alpha(opacity=50);
   opacity: .5;
 }
 button.close {
@@ -5235,11 +5231,9 @@ button.close {
   background-color: #000;
 }
 .modal-backdrop.fade {
-  filter: alpha(opacity=0);
   opacity: 0;
 }
 .modal-backdrop.in {
-  filter: alpha(opacity=50);
   opacity: .5;
 }
 .modal-header {
@@ -5299,11 +5293,9 @@ button.close {
   font-size: 12px;
   line-height: 1.4;
   visibility: visible;
-  filter: alpha(opacity=0);
   opacity: 0;
 }
 .tooltip.in {
-  filter: alpha(opacity=90);
   opacity: .9;
 }
 .tooltip.top {
@@ -5567,13 +5559,11 @@ button.close {
   color: #fff;
   text-align: center;
   text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
-  filter: alpha(opacity=50);
   opacity: .5;
 }
 .carousel-control.left {
   background-image: -webkit-linear-gradient(left, color-stop(rgba(0, 0, 0, .5) 0%), color-stop(rgba(0, 0, 0, .0001) 100%));
   background-image:         linear-gradient(to right, rgba(0, 0, 0, .5) 0%, rgba(0, 0, 0, .0001) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1);
   background-repeat: repeat-x;
 }
 .carousel-control.right {
@@ -5581,14 +5571,12 @@ button.close {
   left: auto;
   background-image: -webkit-linear-gradient(left, color-stop(rgba(0, 0, 0, .0001) 0%), color-stop(rgba(0, 0, 0, .5) 100%));
   background-image:         linear-gradient(to right, rgba(0, 0, 0, .0001) 0%, rgba(0, 0, 0, .5) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1);
   background-repeat: repeat-x;
 }
 .carousel-control:hover,
 .carousel-control:focus {
   color: #fff;
   text-decoration: none;
-  filter: alpha(opacity=90);
   outline: none;
   opacity: .9;
 }
@@ -5650,7 +5638,6 @@ button.close {
   width: 12px;
   height: 12px;
   margin: 0;
-  background-color: url(../images/pagenate.png) no-repeat 0px 0px;
 }
 .carousel-caption {
   position: absolute;

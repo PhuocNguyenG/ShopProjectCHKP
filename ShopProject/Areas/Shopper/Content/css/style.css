@@ -133,6 +133,9 @@
         text-decoration:none;
     }
 
+.panel-heading {
+    height: 54px!important ;
+}
 .side-shopping-buy {
     width: 280px;
     height: 50px;
@@ -1937,7 +1940,7 @@ h2.resp-accordion:first-child {
 }
 
 .table td, .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
-    padding: 15px !important;
+    padding: 7px !important;
 }
 
 .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {

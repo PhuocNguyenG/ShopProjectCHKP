@@ -29,9 +29,13 @@ namespace ShopProject.Areas.Administrator.Controllers
                 var model = dbPro.Products.ToList();
                 if (!string.IsNullOrEmpty(name))
                 {
-                    model = model.Where(p => p.proName.Contains(name)).ToList();
+                    return View(dbPro.Products.Where(p => p.proName.Contains(name)).OrderByDescending(x => x.proName).ToList());
                 }
-                return View(model);
+                else
+                {
+                    return View(model);
+                }
+                
             }
         }
 
@@ -180,24 +184,21 @@ namespace ShopProject.Areas.Administrator.Controllers
             }
             else
             {
-                var model = dbPro.Products.SingleOrDefault(h => h.proID.Equals(id));
-                try
-                {
-                    if (model != null)
+                var model = dbPro.Products.SingleOrDefault(p => p.proID.Equals(id));
+                var modelstar = dbPro.Rates.SingleOrDefault(r => r.proID.Equals(id));
+                var modelcomment = dbPro.Comments.SingleOrDefault(c => c.proID.Equals(id));
+                if (model != null)
                     {
-                        dbPro.Products.Remove(model);
-                        dbPro.SaveChanges();
+                    dbPro.Rates.Remove(modelstar);
+                    dbPro.Comments.Remove(modelcomment);
+                    dbPro.Products.Remove(model);
+                    dbPro.SaveChanges();
                         return RedirectToAction("Index", "Product", new { error = "Xoá sản phẩm thành công." });
                     }
                     else
                     {
                         return RedirectToAction("Index", "Product", new { error = "Sản phẩm không tồn tại." });
                     }
-                }
-                catch (Exception)
-                {
-                    return RedirectToAction("Index", "Product", new { error = "Không thể xoá sản phẩm." });
-                }
             }
         }
 
