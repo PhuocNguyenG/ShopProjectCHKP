@@ -17,7 +17,7 @@
 <hr />
 <div>
     <div class="panel panel-default">
-        <div class="panel-heading">
+        <div class="panel-heading" style="height: 54px;">
             <a class="btn btn-primary btn-default" href="@Url.Action("Create", "Product")" role="button">Tạo sản phẩm mới</a>
             <div class="form-group input-group navbar-right">
                 @using (Ajax.BeginForm("Index", "Product", new AjaxOptions { InsertionMode = InsertionMode.Replace, HttpMethod = "Get" }))

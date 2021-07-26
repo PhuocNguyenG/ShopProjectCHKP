@@ -19,6 +19,7 @@ namespace ShopProject.Areas.Administrator.Models
         public string proID { get; set; }
 
         public int? ordtsQuantity { get; set; }
+        public string ordtsSize { get; set; }
 
         [StringLength(50)]
         public string ordtsThanhTien { get; set; }

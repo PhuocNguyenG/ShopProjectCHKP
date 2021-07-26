@@ -1,0 +1,95 @@
+﻿@model IEnumerable<ShopProject.Areas.Administrator.Models.Order>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Administrator/Views/Shared/_Layout.cshtml";
+}
+@{
+    ShopProject.Repository.ProductDAO proDAO = new ShopProject.Repository.ProductDAO();
+}
+<h2>Đơn hàng</h2>
+<div class="text-warning">
+    @ViewBag.ProError
+</div>
+<hr />
+<div>
+    <div class="panel panel-default">
+        <div class="panel-heading" style="height: 54px;">
+            <div class="form-group input-group navbar-left">
+                @using (Ajax.BeginForm("Index", "Order", new AjaxOptions { InsertionMode = InsertionMode.Replace, HttpMethod = "Get" }))
+                {
+                    <input type="search" name="hdid" class="form-control" style="width:150px" placeholder="Tìm mã hóa đơn..." />
+                    <button class="btn btn-success" type="submit">
+                        <i class="fa fa-search"></i>
+                    </button>
+                }
+            </div>
+            <div class="form-group input-group navbar-left" style="margin-left:10px">
+                @using (Ajax.BeginForm("Index", "Order", new AjaxOptions { InsertionMode = InsertionMode.Replace, HttpMethod = "Get" }))
+                {
+                    <input type="search" name="phone" class="form-control" style="width:150px" placeholder="Tìm số điện thoại..." />
+                    <button class="btn btn-success" type="submit">
+                        <i class="fa fa-search"></i>
+                    </button>
+                }
+            </div>
+
+        </div>
+        <div class="panel-body" style="width:100%;height:500px;overflow:auto;">
+            <div class="table-responsive table-bordered">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Mã HD</th>
+                            <th>Điện thoại</th>
+                            <th>Tên </th>
+                            <th>Ngày</th>
+                            <th>Tin nhắn</th>
+                            <th>Tình trạng</th>
+                            <th>Địa chỉ</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.orderID)</td>
+                                <td>@Html.DisplayFor(modelItem => item.cusPhone)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Customer.cusFullName)</td>
+                                <td>@Html.DisplayFor(modelItem => item.orderDateTime)</td>
+                                <td>@Html.DisplayFor(modelItem => item.orderMessage)</td>
+                                <td>
+                                    @if (item.orderStatus == "1")
+                                    {
+                                        <a style="text-decoration: none;">Đã giao</a>
+                                    }
+                                    else if (item.orderStatus == "0")
+                                    {
+                                    <b> Chưa giao</b>
+                                    }
+                                    else if (item.orderStatus == "2")
+                                    {
+                                        <b style=" text-decoration: none; color: red;">Hoàn trả</b>
+                                    }
+                                    else
+                                    {
+                                        <a style=" text-decoration: none; color: red;">Không xác định</a>
+                                    }
+                                </td>
+                                <td>@Html.DisplayFor(modelItem => item.Customer.cusAddress)</td>
+                                <td>
+                                    <a href="@Url.Action("Details", "Order", new { id = item.orderID })"><i class="fa fa-list-alt fa-fw"></i></a>|
+                                    <a href="@Url.Action("Edit", "Order", new { id = item.orderID })"><i class="fa fa-pencil fa-fw"></i></a>|
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.table-responsive -->
+        </div>
+        <!-- /.panel-body -->
+    </div>
+    <!-- /.panel -->
+</div>

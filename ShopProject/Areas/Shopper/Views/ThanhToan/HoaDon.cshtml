@@ -10,39 +10,33 @@
     <div class="spec ">
         <h3><a href="#" style="text-decoration:none;">Hoá đơn @Session["MHD"]</a></h3>
         <div class="ser-t">
-            <b></b>
-            <span><i></i></span>
             <b class="line"></b>
         </div>
     </div>
     <div class="alert alert-danger">
-        Hình thức thanh toán: chỉ nhận tiền mặt khi giao hàng.
+        Hình thức thanh toán: Nhận tiền mặt khi giao hàng.
     </div>
     <div class="row">
         <div class="col-lg-6">
             <div class="panel panel-success">
                 <div class="panel-heading">
-                    Họ và tên khách: @cus.cusFullName
+                    Thông tin đơn hàng
                 </div>
                 <div class="panel-body">
                     <p>
-                        <br />
+                        Khách hàng: @cus.cusFullName <br />
                         Số điện thoại: @Session["Phone"]<br />
                         Email: @cus.cusEmail<br />
                         Địa chỉ: @cus.cusAddress<br />
                         Ghi chú: @db.Orders.Find(Session["MHD"]).orderMessage
                     </p>
                 </div>
-            </div>
-        </div>
-        <div class="col-lg-6">
-            <div class="panel panel-danger">
                 <div class="panel-heading">
                     Người giao hàng
                 </div>
                 <div class="panel-body">
                     <p>
-                        <br />
+                        Tên: Shop SHKP <br />
                         Số điện thoại: 0975889699<br />
                         Email: sionguyen0209@gmail.com<br />
                         Địa chỉ: Quận 12
@@ -60,7 +54,7 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>#</th>
+                            <th></th>
                             <th>Hình ảnh</th>
                             <th>Tên sản phẩm</th>
                             <th>Số lượng</th>
@@ -77,7 +71,7 @@
                             i++;
                         <tr>
                             <td>@i</td>
-                            <td><img src="@item.Product.proPhoto" width="50" height="50"></td>
+                            <td><img src="@item.Product.proPhoto" width="100" height="120"></td>
                             <td>@item.Product.proName</td>
                             <td>@item.ordtsQuantity</td>
                             <td>@Int32.Parse(item.ordtsThanhTien).ToString("#,##0") VNĐ</td>

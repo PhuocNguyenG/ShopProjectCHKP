@@ -42,12 +42,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -482,6 +480,9 @@
     <Content Include="Areas\Shopper\vendor\Quicksand\static\Quicksand-SemiBold.ttf" />
     <Content Include="fonts\Quicksand-VariableFont_wght.ttf" />
     <Content Include="Areas\Shopper\fonts\Quicksand-VariableFont_wght.ttf" />
+    <Content Include="Areas\Administrator\Views\Order\Index.cshtml" />
+    <Content Include="Areas\Administrator\Views\Order\Details.cshtml" />
+    <Content Include="Areas\Administrator\Views\Order\Edit.cshtml" />
     <None Include="Properties\PublishProfiles\ShopperMVC.pubxml" />
     <Content Include="Image\arr.png" />
     <Content Include="Image\banner\aokhoacnam.png" />
@@ -580,6 +581,7 @@
     <Compile Include="Areas\Administrator\Controllers\AccountController.cs" />
     <Compile Include="Areas\Administrator\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Administrator\Controllers\CustomerController.cs" />
+    <Compile Include="Areas\Administrator\Controllers\OrderController.cs" />
     <Compile Include="Areas\Administrator\Controllers\ProducerController.cs" />
     <Compile Include="Areas\Administrator\Controllers\ProductController.cs" />
     <Compile Include="Areas\Administrator\Controllers\ProductTypeController.cs" />

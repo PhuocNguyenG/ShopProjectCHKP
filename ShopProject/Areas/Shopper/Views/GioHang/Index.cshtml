@@ -33,22 +33,22 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="table-responsive">
-                    <table class="table table-bordered">
-                        <tr>
-                            <th>Hình</th>
-                            <th>Tên sản phẩm</th>
-                            <th>Số lượng và kích cỡ</th>
-                            <th>Đơn giá</th>
-                            <th>Thành tiền</th>
-                            <th></th>
+                    <table class="table table-bordered" style=" border-right: none; border-left: none;">
+                        <tr style=" border-right: none; border-left: none;">
+                            <th style="vertical-align: middle; text-align: center; border-right: none; border-left: none;">Hình</th>
+                            <th style="vertical-align: middle; text-align: center; border-right: none; border-left: none;">Tên sản phẩm</th>
+                            <th style="vertical-align: middle; text-align: center; border-right: none; border-left: none;">Số lượng và kích cỡ</th>
+                            <th style="vertical-align: middle; text-align: center; border-right: none; border-left: none;">Đơn giá</th>
+                            <th style="vertical-align: middle; text-align: center; border-right: none; border-left: none;">Thành tiền</th>
+                            <th style="vertical-align: middle; text-align: center; border-right: none; border-left: none;"></th>
                         </tr>
                         @foreach (var item in Model)
                         {
 
                             <tr>
-                                <td class="text-center"><img src="@item.Hinh" width="70" height="60" /> </td>
-                                <td><a target="_blank" href="@Url.Action("ProductDetail", "Products", new { id = item.SanPhamID })" style="font-size:medium;"> @item.TenSanPham </a> </td>
-                                <td>
+                                <td class="text-center" style="border-right: none; border-left: none;"><img src="@item.Hinh" style=" margin: 0 auto; max-width: 120px; max-height: 225px;" /> </td>
+                                <td style="border-right: none; border-left: none;"><a target="_blank" href="@Url.Action("ProductDetail", "Products", new { id = item.SanPhamID })" style="font-size:medium;"> @item.TenSanPham </a> </td>
+                                <td style=" vertical-align: middle; text-align: center; width: 29%; border-right: none; border-left: none;">
                                     <div @*id="formSoluong_@i"*@ class="formsoluong">
                                         <input class="idsp" type="hidden" name="SanPhamID" value="@item.SanPhamID" />
                                         <div class="number-input">
@@ -56,8 +56,8 @@
                                             <input class="col-lg-4 soluongsp" style="height:30px;" type="number" min="1" step="1" name="soluongmoi" value="@item.SoLuong" />
                                             <button type="button"  onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus giohangprice"></button>
                                         </div>
-                                        <div class="form-control"> Size :@item.Size</div>
-                                        <select class="form-control style-7 giohangprice" id="select-size" name="sizemoi" multiple>
+                                        <div class="form-control" > Size đã chọn:<a style=" font-weight: 900;"> @item.Size</a> </div>
+                                        <select class="form-control style-7 giohangprice" style=" text-align: center;"  id="select-size" name="sizemoi" multiple>
                                             <option selected="selected" style="display:none" value="@item.Size"></option>
                                             <option value="S">S</option>
                                             <option  value="M">M</option>
@@ -67,20 +67,20 @@
                                         </select> 
                                     </div>
                                 </td>
-                                <td> @Int32.Parse(item.DonGia).ToString("#,##0") VNĐ </td>
-                                <td> @item.ThanhTien.ToString("#,##0") VNĐ </td>
-                                <td> <button value="@item.SanPhamID" @*href="@Url.Action("XoaKhoiGio",new { SanPhamID = item.SanPhamID})"*@ onclick="return confirm('Bạn có chắc muốn xóa sản phẩm này?');" class="btn btn-danger btn-sm btn-xoakhoigio">Xóa</button> </td>
+                                <td style="vertical-align: middle; text-align: center; border-right: none; border-left: none; width: 11%; "> @Int32.Parse(item.DonGia).ToString("#,##0") VNĐ </td>
+                                <td  style=" vertical-align: middle; text-align: center; width: 11%; border-right: none; border-left: none;"> @item.ThanhTien.ToString("#,##0") VNĐ </td>
+                                <td style=" vertical-align: middle; text-align: center; width: 10%; border-right: none; border-left: none;" > <button value="@item.SanPhamID" @*href="@Url.Action("XoaKhoiGio",new { SanPhamID = item.SanPhamID})"*@ onclick="return confirm('Bạn có chắc muốn xóa sản phẩm này?');" class="btn btn-danger btn-sm btn-xoakhoigio">Xóa</button> </td>
                             </tr>
                             i++;
                             total += @item.ThanhTien;
                           }
                         <tr>
-                            <td></td>
-                            <td class="text-right"></td>
-                            <td></td>
-                            <td class="text-right">Tổng thành tiền:</td>
-                            <td style="font-size:large;">@total.ToString("#,##0") VNĐ </td>
-                            <td><a href="@Url.Action("Index", "ThanhToan")" role="button" class="btn btn-success" id="btn-thanhtoan">Thanh toán</a></td>
+                            <td style=" border-right: none; border-left: none;"></td>
+                            <td style=" border-right: none; border-left: none;"></td>
+                            <td style=" border-right: none; border-left: none;"></td>
+                            <td class="text-right" style="vertical-align: middle; text-align: center; border-right: none; border-left: none;">Tổng thành tiền:</td>
+                            <td style="font-size: large; border-right: none; border-left: none;" >@total.ToString("#,##0") VNĐ </td>
+                            <td style=" border-right: none; border-left: none;"><a href="@Url.Action("Index", "ThanhToan")" role="button" class="btn btn-success" id="btn-thanhtoan">Thanh toán</a></td>
                         </tr>
                     </table>
                 </div>
