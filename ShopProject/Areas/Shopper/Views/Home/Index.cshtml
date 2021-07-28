@@ -6,15 +6,13 @@
     ShopProject.Repository.ProductDAO proDAO = new ShopProject.Repository.ProductDAO();
     ShopProject.Areas.Shopper.Models.UserContext db = new ShopProject.Areas.Shopper.Models.UserContext();
 }
-<div data-vide-bg="video/video" style="position: relative;">
 
-</div>
 
 <div class="content-top ">
     <div class="container ">
         <ul class="htmlcontent-item-1 row clearfix" style="list-style-type: none; text-align: center; margin-bottom: 25px; ">
             <li>
-                <a href="@Url.Action("ProductsBytypeName", "Products", new { name="Áo khoác", page=1 })" @*class="hoverSlideHome"*@ title="">
+                <a href="@Url.Action("ProductsBytypeName", "Products", new { name="Áo khoác", page=1 })"  title="">
                     <img src="~/Image/banner/banner-ao-khoac.jpg" class="item-img " title="" alt="" width="800" height="300" />
                 </a>
             </li>
@@ -52,28 +50,26 @@
                                     </a>
                                     <div class="mid-1">
                                         <div class="women">
-                                            @if (item.proName.Length > 20)
-                                            {
-                                                <h6><a href="@Url.Action("ProductDetail", "Products", new { id=item.proID })" data-toggle="tooltip" title="@item.proName">@item.proName.Substring(0, 18) . . .</a></h6>
-                                            }
-                                            else
-                                            {
-                                                <h6><a href="@Url.Action("ProductDetail", "Products", new { id=item.proID })">@item.proName</a></h6>
-                                            }
+
+
+                                            <h6><a href="@Url.Action("ProductDetail", "Products", new { id=item.proID })" data-toggle="tooltip" title="@item.proName">@item.proName</a></h6>
+
+
                                         </div>
-                                        
+
                                         <div class="mid-2">
                                             <p>
+                                                <em class="item_price">@proDAO.formatNumber(newPrice.ToString())VNĐ</em>
                                                 @if (Int32.Parse(item.proPrice) > newPrice)
 
                                                 {
-                                                    <label>@proDAO.formatNumber(item.proPrice) VNĐ</label>
+                                                    <label>@proDAO.formatNumber(item.proPrice)</label>
                                                 }
                                                 else
                                                 {
 
                                                 }
-                                                <em class="item_price">@proDAO.formatNumber(newPrice.ToString()) VNĐ</em>
+
                                             </p>
                                             <div class="clearfix"></div>
                                             <div class="block">
@@ -97,13 +93,30 @@
                                                 }
                                             </div>
                                             @*<div>
-                                                <a href="#"><img src="@item.Producer.pdcPhoto" width="50" height="25" /></a>
-                                            </div>*@
+                <a href="#"><img src="@item.Producer.pdcPhoto" width="50" height="25" /></a>
+            </div>*@
                                             <div class="clearfix"></div>
                                         </div>
-                                        <div class="add">
-                                            <button class="btn btn-success btn-themvaogio" value="@item.proID" @*href="@Url.Action("ThemVaoGio", "GioHang", new { SanPhamID = item.proID })"*@> <span class="glyphicon glyphicon-shopping-cart"></span>  Thêm vào giỏ </button>
-                                        </div>
+
+                                        @if (item.proQuantity == 0)
+                                        {
+                                            <div class="add" style="pointer-events: none;">
+                                                <button class="btn btn-danger btn-themvaogio" value="@item.proID" @*href="@Url.Action("ThemVaoGio", "GioHang", new { SanPhamID = item.proID })"*@>
+                                                    <span class="fa fa-times">
+                                                    </span>  Tạm hết hàng
+                                                </button>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="add">
+                                                <button class="btn btn-success btn-themvaogio" value="@item.proID" @*href="@Url.Action("ThemVaoGio", "GioHang", new { SanPhamID = item.proID })"*@>
+                                                    <span class="glyphicon glyphicon-shopping-cart">
+                                                    </span>  Thêm vào giỏ
+                                                </button>
+                                            </div>
+
+                                        }
                                     </div>
                                 </div>
                             </div>
@@ -148,26 +161,27 @@
                                         <div class="women">
                                             @if (item.proName.Length > 20)
                                             {
-                                                <h6><a href="@Url.Action("ProductDetail", "Products", new { id=item.proID })" data-toggle="tooltip" title="@item.proName">@item.proName.Substring(0, 19) . . .</a></h6>
+                                                <h6><a href="@Url.Action("ProductDetail", "Products", new { id=item.proID })" data-toggle="tooltip" title="@item.proName">@item.proName</a></h6>
                                             }
                                             else
                                             {
                                                 <h6><a href="@Url.Action("ProductDetail", "Products", new { id=item.proID })">@item.proName</a></h6>
                                             }
                                         </div>
-                                        (Size: @item.proSize)
+
                                         <div class="mid-2">
                                             <p>
+                                                <em class="item_price">@proDAO.formatNumber(newPrice.ToString()) VNĐ</em>
                                                 @if (Int32.Parse(item.proPrice) > newPrice)
 
                                                 {
-                                                    <label>@proDAO.formatNumber(item.proPrice) VNĐ</label>
+                                                    <label>@proDAO.formatNumber(item.proPrice)</label>
                                                 }
                                                 else
                                                 {
 
                                                 }
-                                                <em class="item_price">@proDAO.formatNumber(newPrice.ToString()) VNĐ</em>
+
                                             </p>
                                             <div class="clearfix"></div>
                                             <div class="block">
@@ -191,16 +205,30 @@
                                                 }
                                             </div>
                                             @*<div>
-                                                <a href="#"><img src="@item.Producer.pdcPhoto" width="50" height="25" /></a>
-                                            </div>*@
+                <a href="#"><img src="@item.Producer.pdcPhoto" width="50" height="25" /></a>
+            </div>*@
                                             <div class="clearfix"></div>
                                         </div>
-                                        <div class="add">
-                                            <button class="btn btn-success btn-themvaogio" value="@item.proID" @*href="@Url.Action("ThemVaoGio", "GioHang", new { SanPhamID = item.proID })"*@>
-                                                <span class="glyphicon glyphicon-shopping-cart">
-                                                </span>  Thêm vào giỏ
-                                            </button>
-                                        </div>
+                                        @if (item.proQuantity == 0)
+                                        {
+                                            <div class="add" style="pointer-events: none;">
+                                                <button class="btn btn-danger btn-themvaogio" value="@item.proID" @*href="@Url.Action("ThemVaoGio", "GioHang", new { SanPhamID = item.proID })"*@>
+                                                    <span class="fa fa-times">
+                                                    </span>  Tạm hết hàng
+                                                </button>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="add">
+                                                <button class="btn btn-success btn-themvaogio" value="@item.proID" @*href="@Url.Action("ThemVaoGio", "GioHang", new { SanPhamID = item.proID })"*@>
+                                                    <span class="glyphicon glyphicon-shopping-cart">
+                                                    </span>  Thêm vào giỏ
+                                                </button>
+                                            </div>
+
+                                        }
+
                                     </div>
                                 </div>
                             </div>

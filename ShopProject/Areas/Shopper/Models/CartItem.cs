@@ -11,6 +11,7 @@ namespace ShopProject.Areas.Shopper.Models
         public string TenSanPham { get; set; }
         public string Hinh { get; set; }
         public string DonGia { get; set; }
+        public int? Type { get; set; }
         public int SoLuong { get; set; }
         public string Size { get; set; }
         public int ThanhTien

@@ -42,7 +42,8 @@
             <div class="text-danger">@Html.ValidationMessageFor(model => model.pdcInfo)</div>
 
             <label>Hình ảnh</label>
-            <input type="file" id="file" name="file" />            
+            <img src="@Model.pdcPhoto" width="100" height="100" />
+            <input type="file" id="file" name="file" />
             @Html.HiddenFor(model => model.pdcPhoto)
             <br />
             <input type="submit" value="Cập nhật" class="btn btn-default" />

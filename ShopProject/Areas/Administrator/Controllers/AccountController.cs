@@ -13,22 +13,37 @@ namespace ShopProject.Areas.Administrator.Controllers
         // GET: Administrator/Account
         public ActionResult Login()
         {
-            return View();
+            if (Session["accname"] != null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                return View();
+            }
+            
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken()]
         public ActionResult Login(Models.Administrator adLogin)
         {
-            try
-            {
-                var model = dbLog.Administrators.SingleOrDefault(a => a.adAcc.Equals(adLogin.adAcc));
-                if (model != null)
+            
+                try
                 {
-                    if (model.adPass.Equals(dao.Encrypt(adLogin.adPass)))
+                    var model = dbLog.Administrators.SingleOrDefault(a => a.adAcc.Equals(adLogin.adAcc));
+                    if (model != null)
                     {
-                        Session["accname"]= model.adAcc;
-                        return RedirectToAction("Index", "Home");
+                        if (model.adPass.Equals(dao.Encrypt(adLogin.adPass)))
+                        {
+                            Session["accname"] = model.adAcc;
+                            return RedirectToAction("Index", "Home");
+                        }
+                        else
+                        {
+                            Session["accname"] = null;
+                            ViewBag.LoginError = "Sai tài khoản hoặc mật khẩu.";
+                        }
                     }
                     else
                     {
@@ -36,20 +51,49 @@ namespace ShopProject.Areas.Administrator.Controllers
                         ViewBag.LoginError = "Sai tài khoản hoặc mật khẩu.";
                     }
                 }
-                else
+                catch (Exception)
                 {
                     Session["accname"] = null;
-                    ViewBag.LoginError="Sai tài khoản hoặc mật khẩu.";
+                    ViewBag.LoginError = "Sai tài khoản hoặc mật khẩu.";
                 }
-            }
-            catch (Exception)
-            {
-                Session["accname"] = null;
-                ViewBag.LoginError = "Sai tài khoản hoặc mật khẩu.";
-            }
             return View();
         }
+        public ActionResult Signup()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken()]
+        public ActionResult Signup(Models.Administrator adSignup)
+        {
+            Administrator.Models.Administrator adac = new Administrator.Models.Administrator();
+            if (Session["accname"] == null)
+            {
+                Session["accname"] = null;
+                return RedirectToAction("Login", "Account");
+            }
+            else
+            {
+                var acc = dbLog.Administrators.SingleOrDefault(a => a.adAcc.Equals(adSignup.adAcc));
+                if (acc != null)
+                {
+                    Session["accname"] = null;
+                    ViewBag.SignupError = "Tài khoản đã tồn tại";
+                    
+                }
+                else
+                {
+                    adac.adAcc = adSignup.adAcc;
+                    adac.adPass = dao.Encrypt(adSignup.adPass);
+                    dbLog.Administrators.Add(adac);
+                    dbLog.SaveChanges();
+                    Session["accname"] = null;
+                    return RedirectToAction("Login", "Account");
+                }
+            }
+            return View();
 
+        }
         public ActionResult Logout()
         {
             System.Web.Security.FormsAuthentication.SignOut();

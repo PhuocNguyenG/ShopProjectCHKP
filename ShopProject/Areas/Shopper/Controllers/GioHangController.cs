@@ -17,7 +17,7 @@ namespace ShopProject.Areas.Shopper.Controllers
             return View(giohang);
 
         }
-        public ActionResult ThemVaoGio(string SanPhamID, string sizemoi)
+        public ActionResult ThemVaoGio(string SanPhamID, string sizemoi,int soluongmoi)
         {
             if (Session["giohang"] == null) // Nếu giỏ hàng chưa được khởi tạo
             {
@@ -34,7 +34,8 @@ namespace ShopProject.Areas.Shopper.Controllers
                 {
                     SanPhamID = SanPhamID,
                     TenSanPham = sp.proName,
-                    SoLuong = 1,
+                    SoLuong = soluongmoi,
+                    Type = sp.ProductType.cateID,
                     Size = sizemoi,
                     Hinh = sp.proPhoto,
                     DonGia = (Int32.Parse(sp.proPrice) - (Int32.Parse(sp.proPrice) * sp.proDiscount)/100).ToString()
@@ -47,7 +48,7 @@ namespace ShopProject.Areas.Shopper.Controllers
             {
                 // Nếu sản phẩm khách chọn đã có trong giỏ hàng thì không thêm vào giỏ nữa mà tăng số lượng lên.
                 CartItem cardItem = giohang.FirstOrDefault(m => m.SanPhamID == SanPhamID);
-                cardItem.SoLuong++;
+                cardItem.SoLuong += soluongmoi;
                 cardItem.Size = sizemoi;
             }
 

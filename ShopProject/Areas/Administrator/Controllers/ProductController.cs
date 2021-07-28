@@ -158,17 +158,21 @@ namespace ShopProject.Areas.Administrator.Controllers
                             ViewBag.EditProError = "Không thể chọn ảnh.";
                         }
                     }
+                    editPro.proUpdateDate = DateTime.Now.ToString();
+                    try
+                    {
+                        dbPro.Entry(editPro).State = System.Data.Entity.EntityState.Modified;
+                        dbPro.SaveChanges();
+                        ViewBag.EditProError = "Cập nhật sản phẩm thành công.";
+                    }
+                    catch (Exception)
+                    {
+                        ViewBag.EditProError = "Không thể cập nhật sản phẩm.";
+                    }
                 }
-                editPro.proUpdateDate = DateTime.Now.ToString();
-                try
+                else
                 {
-                    dbPro.Entry(editPro).State = System.Data.Entity.EntityState.Modified;
-                    dbPro.SaveChanges();
-                    ViewBag.EditProError = "Cập nhật sản phẩm thành công.";
-                }
-                catch (Exception)
-                {
-                    ViewBag.EditProError = "Không thể cập nhật sản phẩm.";
+                    ViewBag.HinhAnh = "Vui lòng chọn hình ảnh.";
                 }
                 return View();
             }
@@ -185,13 +189,24 @@ namespace ShopProject.Areas.Administrator.Controllers
             else
             {
                 var model = dbPro.Products.SingleOrDefault(p => p.proID.Equals(id));
-                var modelstar = dbPro.Rates.SingleOrDefault(r => r.proID.Equals(id));
-                var modelcomment = dbPro.Comments.SingleOrDefault(c => c.proID.Equals(id));
                 if (model != null)
                     {
-                    dbPro.Rates.Remove(modelstar);
-                    dbPro.Comments.Remove(modelcomment);
+
+                    foreach (var item in dbPro.Rates.Where(x => x.proID == id))
+                    {
+                        dbPro.Rates.Remove(item);
+                    }
+                    foreach (var item in dbPro.Comments.Where(x => x.proID == id))
+                    {
+                        dbPro.Comments.Remove(item);
+                    }
+                    foreach (var item in dbPro.OrderDetails.Where(x => x.proID == id))
+                    {
+                        dbPro.OrderDetails.Remove(item);
+                    }
                     dbPro.Products.Remove(model);
+                    
+                    
                     dbPro.SaveChanges();
                         return RedirectToAction("Index", "Product", new { error = "Xoá sản phẩm thành công." });
                     }

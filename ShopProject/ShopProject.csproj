@@ -483,6 +483,7 @@
     <Content Include="Areas\Administrator\Views\Order\Index.cshtml" />
     <Content Include="Areas\Administrator\Views\Order\Details.cshtml" />
     <Content Include="Areas\Administrator\Views\Order\Edit.cshtml" />
+    <Content Include="Areas\Administrator\Views\Account\Signup.cshtml" />
     <None Include="Properties\PublishProfiles\ShopperMVC.pubxml" />
     <Content Include="Image\arr.png" />
     <Content Include="Image\banner\aokhoacnam.png" />

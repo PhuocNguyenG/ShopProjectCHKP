@@ -40,6 +40,7 @@ namespace ShopProject.Areas.Shopper.Models
         public string proUpdateDate { get; set; }
 
         public string proDescription { get; set; }
+        public int? proQuantity { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Comment> Comments { get; set; }

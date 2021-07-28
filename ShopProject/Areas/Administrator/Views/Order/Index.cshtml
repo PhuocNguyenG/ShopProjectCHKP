@@ -53,36 +53,43 @@
                     <tbody>
                         @foreach (var item in Model)
                         {
-                            <tr>
-                                <td>@Html.DisplayFor(modelItem => item.orderID)</td>
-                                <td>@Html.DisplayFor(modelItem => item.cusPhone)</td>
-                                <td>@Html.DisplayFor(modelItem => item.Customer.cusFullName)</td>
-                                <td>@Html.DisplayFor(modelItem => item.orderDateTime)</td>
-                                <td>@Html.DisplayFor(modelItem => item.orderMessage)</td>
-                                <td>
-                                    @if (item.orderStatus == "1")
-                                    {
-                                        <a style="text-decoration: none;">Đã giao</a>
-                                    }
-                                    else if (item.orderStatus == "0")
-                                    {
+                            if (item.orderID == "HD0")
+                            {
+
+                            }
+                            else
+                            {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.orderID)</td>
+                            <td>@Html.DisplayFor(modelItem => item.cusPhone)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Customer.cusFullName)</td>
+                            <td>@Html.DisplayFor(modelItem => item.orderDateTime)</td>
+                            <td>@Html.DisplayFor(modelItem => item.orderMessage)</td>
+                            <td>
+                                @if (item.orderStatus == "1")
+                                {
+                                    <a style="text-decoration: none;">Đã giao</a>
+                                }
+                                else if (item.orderStatus == "0")
+                                {
                                     <b> Chưa giao</b>
-                                    }
-                                    else if (item.orderStatus == "2")
-                                    {
-                                        <b style=" text-decoration: none; color: red;">Hoàn trả</b>
-                                    }
-                                    else
-                                    {
-                                        <a style=" text-decoration: none; color: red;">Không xác định</a>
-                                    }
-                                </td>
-                                <td>@Html.DisplayFor(modelItem => item.Customer.cusAddress)</td>
-                                <td>
-                                    <a href="@Url.Action("Details", "Order", new { id = item.orderID })"><i class="fa fa-list-alt fa-fw"></i></a>|
-                                    <a href="@Url.Action("Edit", "Order", new { id = item.orderID })"><i class="fa fa-pencil fa-fw"></i></a>|
-                                </td>
-                            </tr>
+                                }
+                                else if (item.orderStatus == "2")
+                                {
+                                    <b style=" text-decoration: none; color: red;">Hoàn trả</b>
+                                }
+                                else
+                                {
+                                    <a style=" text-decoration: none; color: red;">Không xác định</a>
+                                }
+                            </td>
+                            <td>@Html.DisplayFor(modelItem => item.Customer.cusAddress)</td>
+                            <td>
+                                <a href="@Url.Action("Details", "Order", new { id = item.orderID })"><i class="fa fa-list-alt fa-fw"></i></a>|
+                            </td>
+                        </tr>
+                            }
+
                         }
                     </tbody>
                 </table>

@@ -71,6 +71,10 @@ namespace ShopProject.Areas.Shopper.Controllers
                 newOrdts.ordtsQuantity = giohang.ElementAtOrDefault(i).SoLuong;
                 newOrdts.ordtsSize = giohang.ElementAtOrDefault(i).Size;
                 newOrdts.ordtsThanhTien = giohang.ElementAtOrDefault(i).ThanhTien.ToString();
+                foreach (var items in db.Products.Where(x => x.proID == newOrdts.proID))
+                {
+                    items.proQuantity -= giohang.ElementAtOrDefault(i).SoLuong;
+                }
 
                 db.OrderDetails.Add(newOrdts);
                 db.SaveChanges();
