@@ -80,7 +80,7 @@ namespace ShopProject.Areas.Administrator.Controllers
                 {
                     ViewBag.EditTypeError = "Không thể cập nhật hóa đơn này.";
                 }
-                 return View(dbPro.Orders.OrderByDescending(x => x.orderDateTime).ToList());
+                 return RedirectToAction("Index");
             }
         }
         public ActionResult Details(string id)

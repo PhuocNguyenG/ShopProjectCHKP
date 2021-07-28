@@ -46,25 +46,45 @@
                         {
 
                             <tr>
-                                <td class="text-center" style="border-right: none; border-left: none;"><img src="@item.Hinh" style=" margin: 0 auto; max-width: 120px; max-height: 225px;" /> </td>
+                                <td class="text-center" style="border-right: none; border-left: none;"><a href="@Url.Action("ProductDetail", "Products", new { id=item.SanPhamID })"> <img src="@item.Hinh" style=" margin: 0 auto; max-width: 120px; max-height: 225px;" /></a> </td>
                                 <td style="border-right: none; border-left: none;"><a target="_blank" href="@Url.Action("ProductDetail", "Products", new { id = item.SanPhamID })" style="font-size:medium;"> @item.TenSanPham </a> </td>
                                 <td style=" vertical-align: middle; text-align: center; width: 29%; border-right: none; border-left: none;">
                                     <div @*id="formSoluong_@i"*@ class="formsoluong">
                                         <input class="idsp" type="hidden" name="SanPhamID" value="@item.SanPhamID" />
                                         <div class="number-input">
-                                            <button type="button"  onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="giohangprice" ></button>
+                                            <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="giohangprice"></button>
                                             <input class="col-lg-4 soluongsp" style="height:30px;" type="number" min="1" step="1" name="soluongmoi" value="@item.SoLuong" />
-                                            <button type="button"  onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus giohangprice"></button>
+                                            <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus giohangprice"></button>
                                         </div>
-                                        <div class="form-control" > Size đã chọn:<a style=" font-weight: 900;"> @item.Size</a> </div>
-                                        <select class="form-control style-7 giohangprice" style=" text-align: center;"  id="select-size" name="sizemoi" multiple>
-                                            <option selected="selected" style="display:none" value="@item.Size"></option>
-                                            <option value="S">S</option>
-                                            <option  value="M">M</option>
-                                            <option  value="L">L</option>
-                                            <option  value="XL">XL</option>
-                                            <option  value="XXL">XXL</option>
-                                        </select> 
+                                        <div class="form-control"> Size đã chọn:<a style=" font-weight: 900;"> @item.Size</a> </div>
+                                        @if (item.Type == 2)
+                                        {
+                                             <select class="form-control style-7 giohangprice" style=" text-align: center;" id="select-size" name="sizemoi" multiple>
+                                        <option selected="selected" style="display:none" value="@item.Size"></option>
+                                        <option value="35">35</option>
+                                        <option value="36">36</option>
+                                        <option value="37">37</option>
+                                        <option value="38">38</option>
+                                        <option value="39">39</option>
+                                        <option value="40">40</option>
+                                        <option value="41">41</option>
+                                        <option value="42">42</option>
+                                        <option value="43">43</option>
+                                        <option value="44">44</option>
+                                        <option value="45">45</option>
+                                    </select>
+                                        }
+                                        else
+                                        {
+                                             <select class="form-control style-7 giohangprice" style=" text-align: center;" id="select-size" name="sizemoi" multiple>
+                                        <option selected="selected" style="display:none" value="@item.Size"></option>
+                                        <option value="S">S</option>
+                                        <option value="M">M</option>
+                                        <option value="L">L</option>
+                                        <option value="XL">XL</option>
+                                        <option value="XXL">XXL</option>
+                                    </select>
+                                        }
                                     </div>
                                 </td>
                                 <td style="vertical-align: middle; text-align: center; border-right: none; border-left: none; width: 11%; "> @Int32.Parse(item.DonGia).ToString("#,##0") VNĐ </td>

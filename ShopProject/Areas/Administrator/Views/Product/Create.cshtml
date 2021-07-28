@@ -40,9 +40,14 @@
             @Html.EditorFor(model => model.proSize, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nhập kích cỡ sản phẩm..." } })
             <div class="text-danger">@Html.ValidationMessageFor(model => model.proSize)</div>
 
+            <label>Số lượng</label>
+            @Html.EditorFor(model => model.proQuantity, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nhập số lượng..." } })
+            <div class="text-danger">@Html.ValidationMessageFor(model => model.proQuantity)</div>
+
             <label>Đơn giá</label>
             @Html.EditorFor(model => model.proPrice, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nhập đơn giá sản phẩm..." } })
             <div class="text-danger">@Html.ValidationMessageFor(model => model.proPrice)</div>
+
 
             <label>Chiết khấu</label>
             @Html.EditorFor(model => model.proDiscount, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nhập chiết khấu (%)..." } })
@@ -55,6 +60,8 @@
             <label>Mô tả</label>
             @Html.TextAreaFor(model => model.proDescription, new { @class = "form-control", @placeholder = "Nhập mô tả sản phẩm..." })
             <div class="text-danger">@Html.ValidationMessageFor(model => model.proDescription)</div>
+
+
             <br />
             <input type="submit" value="Tạo mới" class="btn btn-default" />
         </div>

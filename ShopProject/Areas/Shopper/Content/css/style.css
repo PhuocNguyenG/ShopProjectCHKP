@@ -896,6 +896,13 @@ ul.nav.tabs {
     .mid-1 h6 a {
         color: #000000;
         text-decoration: none;
+        transition: 0.2s ease-in-out;
+        text-transform: capitalize;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
     }
 
         .mid-1 h6 a:hover {

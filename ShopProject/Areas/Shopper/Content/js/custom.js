@@ -16,22 +16,20 @@ jQuery(document).ready(function ($) {
      /*$('option').mousedown(function (e) {
         e.preventDefault();
         $(this).toggleClass('selected');
-
         $(this).prop('selected', !$(this).prop('selected'));
         return false;
     });*/
-
-
     //của sidebar gio hang
     $(".btn-themvaogio").click(function () {
         var product_id = $(this).val();
+        var soluongmoi = 1;
         $.ajax({
-            url: '/GioHang/ThemVaoGio?SamPhamID=' + product_id,
+            url: '/GioHang/ThemVaoGio?SamPhamID=' + product_id + '&soluongmoi=' + soluongmoi,
             data: { SanPhamID: product_id },
             success: function (data) {
                 $("body").load(location.href)
-                /*alertify.set('notifier', 'position', 'top-right');
-                alertify.success('Current position ');*/
+                alertify.set('notifier', 'position', 'top-right');
+                alertify.success('Current position ');
             },
             error: function (data) {
                 alert('Sản phẫm lỗi');
@@ -42,8 +40,9 @@ jQuery(document).ready(function ($) {
     $('.btn-detailthemvaogio').click(function () {
         var product_id = $(this).val();
         var sizemoi = $('.sizemoidetail').val();
+        var soluongmoi = $('.soluongmoidetail').val();
         $.ajax({
-            url: '/GioHang/ThemVaoGio?SamPhamID=' + product_id + '&sizemoi=' + sizemoi,
+            url: '/GioHang/ThemVaoGio?SamPhamID=' + product_id + '&sizemoi=' + sizemoi + '&soluongmoi=' + soluongmoi,
             data: { SanPhamID: product_id },
             success: function (data) {
                 $(".switcher-wrapper").toggleClass("switcher-toggled")
@@ -51,7 +50,7 @@ jQuery(document).ready(function ($) {
             },
             error: function (data) {
 
-                alert('Sản phẫm lỗi');
+                alert('Sản phẫm lỗi detail');
 
             }
         });
@@ -68,7 +67,7 @@ jQuery(document).ready(function ($) {
             },
             error: function (data) {
 
-                alert('Sản phẫm lỗi');
+                alert('Lỗi xóa khỏi giỏ');
 
             }
         });
@@ -85,7 +84,7 @@ jQuery(document).ready(function ($) {
                 $('body').load(location.href);
             },
             error: function (data) {
-                alert('Sản phẫm lỗi');
+                alert('Lỗi giỏ hàng price');
             }
         });
     });

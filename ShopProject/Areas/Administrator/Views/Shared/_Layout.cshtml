@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My Shopper for Admin</title>
+    <title>@ViewBag.Title - Admin</title>
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
@@ -65,32 +65,6 @@
                     </ul>
                     <!-- /.dropdown-alerts -->
                 </li>
-
-                <!--<li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-comment fa-fw"></i> <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-messages">
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <strong>...</strong>
-                                    <span class="pull-right text-muted">
-                                        <em>Yesterday</em>
-                                    </span>
-                                </div>
-                                <div>Sản phẩm rất tốt, tôi rất ưng ý.</div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a class="text-center" href="#">
-                                <strong>Xem tất cả nhận xét</strong>
-                                <i class="fa fa-angle-right"></i>
-                            </a>
-                        </li>
-                    </ul>-->
-                    <!-- /.dropdown-messages -->
                 <!--</li>-->
                 <!-- /.dropdown -->
                 <li class="dropdown">
@@ -98,6 +72,10 @@
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
+
+                        <li>
+                            <a href="@Url.Action("Signup", "Account")"><i class="fa fa-sign-in fa-fw"></i> Đăng Ký</a>
+                        </li>
                         <li>
                             <a href="@Url.Action("Logout", "Account")"><i class="fa fa-sign-out fa-fw"></i> Đăng xuất</a>
                         </li>
@@ -176,5 +154,6 @@
 
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
+    
 </body>
 </html>

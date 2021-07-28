@@ -18,6 +18,7 @@
 </div>
 <div>
     <div class="panel panel-default">
+        
         <div class="panel-body" style="width:100%;height:500px;overflow:auto;">
             <div class="table-responsive table-bordered">
                 <table class="table">
@@ -37,20 +38,22 @@
                         @{
                             int i = 0;
                             int tong = 0;
+                            string id = "";
                         }
                         @foreach (var item in Model)
                         {
                             i++;
-                        <tr>
-                            <td>@Html.DisplayFor(modelItem => item.orderID)</td>
-                            <td><img src="@item.Product.proPhoto" width="50" height="60"></td>
-                            <td>@Html.DisplayFor(modelItem => item.Product.proName)</td>
-                            <td>@Html.DisplayFor(modelItem => item.proID)</td>
-                            <td>@Html.DisplayFor(modelItem => item.ordtsSize)</td>
-                            <td>@Html.DisplayFor(modelItem => item.ordtsQuantity)</td>
-                            <td>@Int32.Parse(item.ordtsThanhTien).ToString("#,##0") VNĐ</td>
-                        </tr>
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.orderID)</td>
+                                <td><img src="@item.Product.proPhoto" width="50" height="60"></td>
+                                <td>@Html.DisplayFor(modelItem => item.Product.proName)</td>
+                                <td>@Html.DisplayFor(modelItem => item.proID)</td>
+                                <td>@Html.DisplayFor(modelItem => item.ordtsSize)</td>
+                                <td>@Html.DisplayFor(modelItem => item.ordtsQuantity)</td>
+                                <td>@Int32.Parse(item.ordtsThanhTien).ToString("#,##0") VNĐ</td>
+                            </tr>
                             tong += Int32.Parse(item.ordtsThanhTien);
+                            id = item.orderID;
                         }
 
                     </tbody>
@@ -62,7 +65,7 @@
                             <td></td>
                             <td>Tổng tiền:</td>
                             <td style="font-weight: 700;">@tong.ToString("#,##0") VNĐ</td>
-                            <td></td>
+                            <td><a href="@Url.Action("Edit", "Order", new { id = id})"><i class="fa fa-pencil fa-fw"></i></a>|</td>
                         </tr>
                     </tfoot>
                 </table>
