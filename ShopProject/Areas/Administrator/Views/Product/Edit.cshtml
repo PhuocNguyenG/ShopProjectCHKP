@@ -50,11 +50,31 @@
             <div class="text-danger">@Html.ValidationMessageFor(model => model.proDiscount)</div>
 
 
-            <label>Hình ảnh</label>
-            @*<img src="@Model.proPhoto" width="100" height="100" />*@
+
+            <label>*Hình ảnh (Chính)*</label>
             <input type="file" id="file" name="file" />
             @Html.HiddenFor(model => model.proPhoto)
             <div class="text-danger">@ViewBag.HinhAnh</div>
+
+            <label>Hình ảnh (Sau)</label>
+            <input type="file" id="file3" name="file3" />
+            @Html.HiddenFor(model => model.proPhoto3)
+
+            <label>Hình ảnh (Phải)</label>
+            <input type="file" id="file2" name="file2" />
+            @Html.HiddenFor(model => model.proPhoto2)
+
+            <label>Hình ảnh (Trái)</label>
+            <input type="file" id="file4" name="file4" />
+            @Html.HiddenFor(model => model.proPhoto4)
+
+            <label>Hình ảnh (Trên)</label>
+            <input type="file" id="file5" name="file5" />
+            @Html.HiddenFor(model => model.proPhoto5)
+
+            <label>Hình ảnh (Dưới)</label>
+            <input type="file" id="file6" name="file6" />
+            @Html.HiddenFor(model => model.proPhoto6)
 
 
             <label>Mô tả</label>

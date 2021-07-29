@@ -58,7 +58,7 @@ namespace ShopProject.Areas.Administrator.Controllers
 
         [HandleError]
         [HttpPost]
-        public ActionResult Create(Models.Product createPro, HttpPostedFileBase file)
+        public ActionResult Create(Models.Product createPro, HttpPostedFileBase file, HttpPostedFileBase file2, HttpPostedFileBase file3, HttpPostedFileBase file4, HttpPostedFileBase file5, HttpPostedFileBase file6)
         {
             if (Session["accname"] == null)
             {
@@ -76,9 +76,77 @@ namespace ShopProject.Areas.Administrator.Controllers
                     {
                         try
                         {
-                            string nameFile = Path.GetFileName(file.FileName);
+                            string nameFile = "";
+                            string nameFile2 = "";
+                            string nameFile3 = "";
+                            string nameFile4 = "";
+                            string nameFile5 = "";
+                            string nameFile6 = "";
+                            nameFile = Path.GetFileName(file.FileName);
                             file.SaveAs(Path.Combine(Server.MapPath("/Image"), nameFile));
+
+                            /*Ngoại trừ hình chính thì những hình khác không được thêm thì sẽ được để màu trắng*/
+
+                            if (file2 == null)
+                            {
+                                nameFile2 = "giaytrang.jpg";
+                            }
+                            else
+                            {
+                                nameFile2 = Path.GetFileName(file2.FileName);
+                                file2.SaveAs(Path.Combine(Server.MapPath("/Image"), nameFile2));
+                            }
+
+                            if (file3 == null)
+                            {
+                                nameFile3 = "giaytrang.jpg";
+                            }
+                            else
+                            {
+                                nameFile3 = Path.GetFileName(file3.FileName);
+                                file3.SaveAs(Path.Combine(Server.MapPath("/Image"), nameFile3));
+                            }
+
+                            if (file4 == null)
+                            {
+                                nameFile4 = "giaytrang.jpg";
+                            }
+                            else
+                            {
+                                nameFile4 = Path.GetFileName(file4.FileName);
+                                file4.SaveAs(Path.Combine(Server.MapPath("/Image"), nameFile4));
+                            }
+
+                            if (file5 == null)
+                            {
+                                nameFile5 = "giaytrang.jpg";
+                            }
+                            else
+                            {
+                                nameFile5 = Path.GetFileName(file5.FileName);
+                                file5.SaveAs(Path.Combine(Server.MapPath("/Image"), nameFile5));
+                            }
+
+                            if (file6 == null)
+                            {
+                                nameFile6 = "giaytrang.jpg";
+                            }
+                            else
+                            {
+                                nameFile6 = Path.GetFileName(file6.FileName);
+                                file6.SaveAs(Path.Combine(Server.MapPath("/Image"), nameFile6));
+                            }
+                            /*file2.SaveAs(Path.Combine(Server.MapPath("/Image"), nameFile2));
+                            file3.SaveAs(Path.Combine(Server.MapPath("/Image"), nameFile3));
+                            file4.SaveAs(Path.Combine(Server.MapPath("/Image"), nameFile4));
+                            file5.SaveAs(Path.Combine(Server.MapPath("/Image"), nameFile5));
+                            file6.SaveAs(Path.Combine(Server.MapPath("/Image"), nameFile6));*/
                             createPro.proPhoto = "/Image/" + nameFile;
+                            createPro.proPhoto2 = "/Image/" + nameFile2;
+                            createPro.proPhoto3 = "/Image/" + nameFile3;
+                            createPro.proPhoto4 = "/Image/" + nameFile4;
+                            createPro.proPhoto5 = "/Image/" + nameFile5;
+                            createPro.proPhoto6 = "/Image/" + nameFile6;
                         }
                         catch (Exception)
                         {
@@ -132,7 +200,7 @@ namespace ShopProject.Areas.Administrator.Controllers
 
         [HandleError]
         [HttpPost]
-        public ActionResult Edit(Models.Product editPro, HttpPostedFileBase file)
+        public ActionResult Edit(Models.Product editPro, HttpPostedFileBase file, HttpPostedFileBase file2, HttpPostedFileBase file3, HttpPostedFileBase file4, HttpPostedFileBase file5, HttpPostedFileBase file6)
         {
             if (Session["accname"] == null)
             {
@@ -149,9 +217,77 @@ namespace ShopProject.Areas.Administrator.Controllers
                     {
                         try
                         {
-                            string nameFile = Path.GetFileName(file.FileName);
+                            string nameFile = "";
+                            string nameFile2 = "";
+                            string nameFile3 = "";
+                            string nameFile4 = "";
+                            string nameFile5 = "";
+                            string nameFile6 = "";
+                            nameFile = Path.GetFileName(file.FileName);
                             file.SaveAs(Path.Combine(Server.MapPath("/Image"), nameFile));
+
+                            /*Ngoại trừ hình chính thì những hình khác không được thêm thì sẽ được để màu trắng*/
+
+                            if (file2 == null)
+                            {
+                                nameFile2 = "giaytrang.jpg";
+                            }
+                            else
+                            {
+                                nameFile2 = Path.GetFileName(file2.FileName);
+                                file2.SaveAs(Path.Combine(Server.MapPath("/Image"), nameFile2));
+                            }
+
+                            if (file3 == null)
+                            {
+                                nameFile3 = "giaytrang.jpg";
+                            }
+                            else
+                            {
+                                nameFile3 = Path.GetFileName(file3.FileName);
+                                file3.SaveAs(Path.Combine(Server.MapPath("/Image"), nameFile3));
+                            }
+
+                            if (file4 == null)
+                            {
+                                nameFile4 = "giaytrang.jpg";
+                            }
+                            else
+                            {
+                                nameFile4 = Path.GetFileName(file4.FileName);
+                                file4.SaveAs(Path.Combine(Server.MapPath("/Image"), nameFile4));
+                            }
+
+                            if (file5 == null)
+                            {
+                                nameFile5 = "giaytrang.jpg";
+                            }
+                            else
+                            {
+                                nameFile5 = Path.GetFileName(file5.FileName);
+                                file5.SaveAs(Path.Combine(Server.MapPath("/Image"), nameFile5));
+                            }
+
+                            if (file6 == null)
+                            {
+                                nameFile6 = "giaytrang.jpg";
+                            }
+                            else
+                            {
+                                nameFile6 = Path.GetFileName(file6.FileName);
+                                file6.SaveAs(Path.Combine(Server.MapPath("/Image"), nameFile6));
+                            }
+                            /*file2.SaveAs(Path.Combine(Server.MapPath("/Image"), nameFile2));
+                            file3.SaveAs(Path.Combine(Server.MapPath("/Image"), nameFile3));
+                            file4.SaveAs(Path.Combine(Server.MapPath("/Image"), nameFile4));
+                            file5.SaveAs(Path.Combine(Server.MapPath("/Image"), nameFile5));
+                            file6.SaveAs(Path.Combine(Server.MapPath("/Image"), nameFile6));*/
                             editPro.proPhoto = "/Image/" + nameFile;
+                            editPro.proPhoto2 = "/Image/" + nameFile2;
+                            editPro.proPhoto3 = "/Image/" + nameFile3;
+                            editPro.proPhoto4 = "/Image/" + nameFile4;
+                            editPro.proPhoto5 = "/Image/" + nameFile5;
+                            editPro.proPhoto6 = "/Image/" + nameFile6;
                         }
                         catch (Exception)
                         {

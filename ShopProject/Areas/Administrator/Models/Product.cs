@@ -26,7 +26,7 @@ namespace ShopProject.Areas.Administrator.Models
         [StringLength(200)]
         public string proName { get; set; }
 
-        [StringLength(10)]
+        [StringLength(50)]
         public string proSize { get; set; }
 
         [StringLength(10)]
@@ -41,6 +41,11 @@ namespace ShopProject.Areas.Administrator.Models
 
         public string proDescription { get; set; }
         public int? proQuantity { get; set; }
+        public string proPhoto2 { get; set; }
+        public string proPhoto3 { get; set; }
+        public string proPhoto4 { get; set; }
+        public string proPhoto5 { get; set; }
+        public string proPhoto6 { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Comment> Comments { get; set; }

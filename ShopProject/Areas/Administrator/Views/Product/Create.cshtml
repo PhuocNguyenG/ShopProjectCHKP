@@ -53,9 +53,24 @@
             @Html.EditorFor(model => model.proDiscount, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nhập chiết khấu (%)..." } })
             <div class="text-danger">@Html.ValidationMessageFor(model => model.proDiscount)</div>
 
-            <label>Hình ảnh</label>
+            <label>*Hình ảnh (Chính)*</label>
             <input type="file" id="file" name="file" />
             <div class="text-danger">@ViewBag.HinhAnh</div>
+
+            <label>Hình ảnh (Sau)</label>
+            <input type="file" id="file3" name="file3" />
+
+            <label>Hình ảnh (Phải)</label>
+            <input type="file" id="file2" name="file2" />
+
+            <label>Hình ảnh (Trái)</label>
+            <input type="file" id="file4" name="file4" />
+
+            <label>Hình ảnh (Trên)</label>
+            <input type="file" id="file5" name="file5" />
+
+            <label>Hình ảnh (Dưới)</label>
+            <input type="file" id="file6" name="file6" />
 
             <label>Mô tả</label>
             @Html.TextAreaFor(model => model.proDescription, new { @class = "form-control", @placeholder = "Nhập mô tả sản phẩm..." })

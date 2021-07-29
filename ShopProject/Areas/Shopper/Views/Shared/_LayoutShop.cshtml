@@ -77,17 +77,17 @@
     <div id="page">
         <div class="header">
             <div class="container" style="margin-bottom: 10px;">
-               
+
                 @*<div class="head-t">
-                    <ul class="card">
-                        <li><a href="@Url.Action("Index", "Login")"><i class="fa fa-arrow-right" aria-hidden="true"></i>Đăng nhập</a></li>
-                        <li><a href="@Url.Action("DK", "Login")"><i class="fa fa-arrow-right" aria-hidden="true"></i>Đăng ký</a></li>
-                    </ul>
-                </div>*@
+                        <ul class="card">
+                            <li><a href="@Url.Action("Index", "Login")"><i class="fa fa-arrow-right" aria-hidden="true"></i>Đăng nhập</a></li>
+                            <li><a href="@Url.Action("DK", "Login")"><i class="fa fa-arrow-right" aria-hidden="true"></i>Đăng ký</a></li>
+                        </ul>
+                    </div>*@
 
                 <div class="nav-top" style=" display: flex;">
                     <div class="logo">
-                        <h1><a href="/"><img src="~/Image/logoshop.png" height="50" width="100"/></a></h1>
+                        <h1><a href="/"><img src="~/Image/logoshop.png" height="50" width="100" /></a></h1>
                     </div>
                     <nav class="navbar navbar-default">
                         <div class="navbar-header nav_2">
@@ -125,7 +125,7 @@
                                         }
                                     </ul>
                                 </li>
-                                
+
                             </ul>
                         </div>
                     </nav>
@@ -243,7 +243,7 @@
                             {
                                 <tr style=" display: flex; position: relative; margin-top: 1px; border-bottom: 1px solid red;">
                                     <td class="col" style="width: 30%; height: fit-content; margin-top: -1px; "><a href="@Url.Action("ProductDetail", "Products", new { id=item.SanPhamID })"><img src="@item.Hinh" width="80" height="80" /> </a></td>
-                                    <td class="col" style="width:33%; text-decoration:none"><a target="_blank" href="@Url.Action("ProductDetail", "Products", new { id = item.SanPhamID })" style="font-size: medium; margin: auto;"> @item.TenSanPham </a> </td>
+                                    <td class="col" style="width:33%; text-decoration:none"><a target="_blank" href="@Url.Action("ProductDetail", "Products", new { id = item.SanPhamID })" style="font-size: medium; margin: auto; color: #000000; text-decoration: none; transition: 0.2s ease-in-out; text-transform: capitalize; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; "> @item.TenSanPham </a> </td>
                                     <td class="col" style="width: 21%;"><a style=" margin: auto;"> @Int32.Parse(item.DonGia).ToString("#,##0") VNĐ</a> </td>
                                     <td class="col" style="width: 17%;"> <button value="@item.SanPhamID" @*href="@Url.Action("XoaKhoiGio", new { SanPhamID = item.SanPhamID })"*@ class="btn btn-danger btn-sm btn-xoakhoigio">Xóa</button> </td>
                                 </tr>
@@ -275,6 +275,11 @@
         function alertsize() {
             alert("Hãy kiểm tra kích cỡ");
         }
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
     </script>
     <script src="~/Areas/Shopper/Content/js/custom.js"></script>
     <script src="~/Areas/Shopper/Content/js/bootstrap.js"></script>

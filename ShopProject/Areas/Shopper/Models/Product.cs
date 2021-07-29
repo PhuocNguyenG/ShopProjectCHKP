@@ -41,6 +41,11 @@ namespace ShopProject.Areas.Shopper.Models
 
         public string proDescription { get; set; }
         public int? proQuantity { get; set; }
+        public string proPhoto2 { get; set; }
+        public string proPhoto3 { get; set; }
+        public string proPhoto4 { get; set; }
+        public string proPhoto5 { get; set; }
+        public string proPhoto6 { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Comment> Comments { get; set; }
