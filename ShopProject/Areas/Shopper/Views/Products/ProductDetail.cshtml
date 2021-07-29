@@ -12,17 +12,172 @@
         <div class="single-top">
             <div class="col-md-5 single-top">
                 <div class="single-w3agile">
-                    <div id="picture-frame">
+                    @*<div id="picture-frame">
                         <img src="@Model.proPhoto" data-src="@Model.proPhoto" alt="" class="img-responsive" />
+                    </div>*@
+                    <div class="scene">
+                        <div class="cube">
+                            <div class="cube__face cube__face--front picture-frame" ><img src="@Model.proPhoto" data-src="@Model.proPhoto" alt="" class="img-responsive" /></div>
+                            <div class="cube__face cube__face--back picture-frame" ><img src="@Model.proPhoto2" data-src="@Model.proPhoto2" alt="" class="img-responsive" /></div>
+                            <div class="cube__face cube__face--right picture-frame" ><img src="@Model.proPhoto3"  data-src="@Model.proPhoto3" alt="" class="img-responsive"  /></div>
+                            <div class="cube__face cube__face--left picture-frame"><img src="@Model.proPhoto4" data-src="@Model.proPhoto4" alt="" class="img-responsive" /></div>
+                            <div class="cube__face cube__face--top picture-frame"  ><img src="@Model.proPhoto5"  data-src="@Model.proPhoto5" alt="" class="img-responsive"  /></div>
+                            <div class="cube__face cube__face--bottom picture-frame" ><img src="@Model.proPhoto6"  data-src="@Model.proPhoto6" alt="" class="img-responsive" /></div>
+                        </div>
                     </div>
+                    <p class="radio-group">
+                        <label>
+                            <input type="radio" name="rotate-cube-side" value="front" checked /> Trước
+                        </label>
+                        <label>
+                            <input type="radio" name="rotate-cube-side" value="right" /> Sau
+                        </label>
+                        <label>
+                            <input type="radio" name="rotate-cube-side" value="back" /> Phải
+                        </label>
+                        <label>
+                            <input type="radio" name="rotate-cube-side" value="left" /> Trái
+                        </label>
+                        <label>
+                            <input type="radio" name="rotate-cube-side" value="top" /> Trên
+                        </label>
+                        <label>
+                            <input type="radio" name="rotate-cube-side" value="bottom" /> Dưới
+                        </label>
+                    </p>
+
                     <script src="~/Areas/Shopper/Content/js/jquery.zoomtoo.js"></script>
-                    <script>
+                    <script type="text/javascript">
                         $(function () {
-                            $("#picture-frame").zoomToo({
-                                magnify: 1.5
+                            $(".picture-frame").zoomToo({
+                                magnify: 0.85
                             });
                         });
+                        var cube = document.querySelector('.cube');
+                        var radioGroup = document.querySelector('.radio-group');
+                        var currentClass = '';
+
+                        function changeSide() {
+                            var checkedRadio = radioGroup.querySelector(':checked');
+                            var showClass = 'show-' + checkedRadio.value;
+                            if (currentClass) {
+                                cube.classList.remove(currentClass);
+                            }
+                            cube.classList.add(showClass);
+                            currentClass = showClass;
+                        }
+                        // set initial side
+                        changeSide();
+
+                        radioGroup.addEventListener('change', changeSide);
                     </script>
+                    <style type="text/css">
+                        .scene {
+                            width: 300px;
+                            height: 300px;
+                            border: 1px solid #CCC;
+                            margin-bottom: 70px;
+                            perspective: 600px;
+                        }
+
+                        .cube {
+                            width: 300px;
+                            height: 300px;
+                            position: relative;
+                            transform-style: preserve-3d;
+                            transform: translateZ(-100px);
+                            transition: transform 1s;
+                        }
+
+                            .cube.show-front {
+                                transform: translateZ(-100px) rotateY( 0deg);
+                            }
+
+                            .cube.show-right {
+                                transform: translateZ(-100px) rotateY( -90deg);
+                            }
+
+                            .cube.show-back {
+                                transform: translateZ(-100px) rotateY(-180deg);
+                            }
+
+                            .cube.show-left {
+                                transform: translateZ(-100px) rotateY(-270deg);
+                            }
+
+                            .cube.show-top {
+                                transform: translateZ(-100px) rotateX( -90deg);
+                            }
+
+                            .cube.show-bottom {
+                                transform: translateZ(-100px) rotateX( 90deg);
+                            }
+
+                        .cube__face {
+                            position: absolute;
+                            width: 300px;
+                            height: 300px;
+                            border: 2px solid black;
+                            line-height: 200px;
+                            font-size: 40px;
+                            font-weight: bold;
+                            color: white;
+                            text-align: center;
+                        }
+
+                        .cube__face--front {
+                            background: hsl(0deg 0% 100% / 88%)
+                        }
+
+                        .cube__face--right {
+                            background: hsl(0deg 0% 100% / 88%)
+                        }
+
+                        .cube__face--back {
+                            background: hsl(0deg 0% 100% / 88%)
+                        }
+
+                        .cube__face--left {
+                            background: hsl(0deg 0% 100% / 88%)
+                        }
+
+                        .cube__face--top {
+                            background: hsl(0deg 0% 100% / 88%)
+                        }
+
+                        .cube__face--bottom {
+                            background: hsl(0deg 0% 100% / 88%)
+                        }
+
+                        .cube__face--front {
+                            transform: rotateY( 0deg) translateZ(150px);
+                        }
+
+                        .cube__face--right {
+                            transform: rotateY( 90deg) translateZ(150px);
+                        }
+
+                        .cube__face--back {
+                            transform: rotateY(180deg) translateZ(150px);
+                        }
+
+                        .cube__face--left {
+                            transform: rotateY(-90deg) translateZ(150px);
+                        }
+
+                        .cube__face--top {
+                            transform: rotateX( 90deg) translateZ(150px);
+                        }
+
+                        .cube__face--bottom {
+                            transform: rotateX(-90deg) translateZ(150px);
+                        }
+
+                        label {
+                            margin-right: 10px;
+                        }
+                    </style>
+
                 </div>
             </div>
         </div>
@@ -185,7 +340,6 @@
                                             <h6><a class="name-product" href="@Url.Action("ProductDetail", "Products", new { id=item.proID })">@item.proName</a></h6>
 
                                         </div>
-                                        (Size: @item.proSize)
                                         <div class="mid-2">
                                             <p>
                                                 <em class="item_price">@proDAO.formatNumber(newPrice.ToString()) VNĐ</em>
